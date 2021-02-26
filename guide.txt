@@ -1,0 +1,44 @@
+translation English by  Papago
+
+
+Airport System Implementation Code
+
+
+version -Incomplete- [version -0.1.5]
+
+
+* class help : 
+	Eng
+	
+	first, It inherits airline(), passengers(), and airport_sysem().
+	
+	// CLS PASSENGER
+	- resevation(airlines name, date you want, cls airline, cls airport_system)
+		
+		We make a reservation when you want.
+	
+	- cancle_reservation(airlines name, date you want to cancle, cls airport_system)
+		
+		cancle the reservation you want.
+
+	// CLS AIRPORT_SYSTEM()
+	- none (Check-in, etc. will be added.)
+
+
+	//CLS AILINE
+	- del_airline(airline you want to del)
+		
+		deleted the airline you want.
+
+	-create_airlines(name of airline you want to create)
+
+		create the airline you want.
+
+	- create_schedule(airline to be add, schedule)
+
+		create the schedule you want.
+
+
+
+THANK YOU!		
+	
