@@ -1,3 +1,5 @@
+import time
+
 class passenger():
     def __init__(self, names):
         self.money = 0
@@ -53,13 +55,63 @@ class passenger():
         
         else :
             print("예약한 적이 없습니다.")
+
+    def board(self, clsAir:'class airport_system'):
+        if self.name in clsAir.checkinAIR:
+            for i in clsAir.checkinAIR[self.name]:
+                
+                location = clsAir.checkinDATE[self.name][clsAir.checkinAIR[self.name].index(i)]
+                answer = input(f"\n\n {i} 항공사, {location} 날짜에 예약된 비행기 타시겠습니까? (y/n) ")
+
+                if answer == 'y':
+                    print("탑승 중...")
+                    time.sleep(2)
+                    clsAir.checkinAIR[self.name].remove(i)
+                    clsAir.checkinDATE[self.name].remove(location)
+
+                    print("\n\n-------system-------\n\n탑승 완료되었습니다!\n\n--------------\n")
+        else :
+            print("탈 항목이 없습니다.")
+            
         
 
 class airport_system():
     def __init__(self):
         self.airScheduleAIR = {}
         self.airScheduleDATE = {}
-        
+        self.checkinAIR = {}
+        self.checkinDATE = {}
+
+
+    def checkIn(self, airN :'airlines name',date : 'date what you want to checkin', clsPass:'passenger class'):
+        if clsPass.name in (self.airScheduleAIR and self.airScheduleDATE):
+            
+            names = clsPass.name
+            if airN in self.airScheduleAIR[names] and date in self.airScheduleDATE[names]:
+                
+                agree = input("체크인 하시겠습니까? (y/n) ")
+                if agree == 'y':
+                    
+                    if names not in self.checkinAIR:
+                        self.checkinAIR[names] = list()
+                        self.checkinDATE[names] = list()
+                    print("---잠시만 기다려 주세요...---")
+                    time.sleep(3.0)
+                    
+                    print("-------system-------\n\n체크인이 완료되었습니다!\n")
+                    self.checkinAIR[names].append(airN)
+                    self.checkinDATE[names].append(date)
+                    print("--------------")
+                
+                else :
+                    print("\n------- 취소되었습니다. -------\n\n")
+                
+            else :
+                print("체크인 할 날짜나 항공사가 없습니다.")
+
+        else :
+            print("예약한 적이 없습니다.")
+
 
 class airline():
     def __init__(self):
@@ -100,9 +152,16 @@ class airline():
             print(f"{airline} 항공사는 존재하지 않습니다.")
 
 
+def release():
+    version = '1.0.2'
+
+    print(f">>> [ Airport System Implementation Program ] release tag : {version} // Made by Cloudy // MIT LICENSE\n")
+
+
 if __name__ == "__main__":
+    release()
+    
     airline = airline()
-    airline.del_airline('sasdfasdf')
     airport = airport_system()
 
     a = passenger('hoho')
@@ -116,6 +175,13 @@ if __name__ == "__main__":
     print(airport.airScheduleAIR)
     print(airport.airScheduleDATE)
 
+    airport.checkIn('korea air','2/14',a)
 
+    print(airport.checkinAIR)
+    print(airport.checkinDATE)
+
+    a.board(airport)
+
+    
 
 
