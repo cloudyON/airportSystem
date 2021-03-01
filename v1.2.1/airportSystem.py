@@ -133,7 +133,7 @@ class airline():
         except ValueError:
             print(f"That airline : \'{dele}\' does not exist.")
 
-    def create_airlines(self, name : ''):
+    def create_airlines(self, name : 'name of airline'):
         
         if name not in self.airlines:
             self.airlines.append(name)
@@ -153,7 +153,7 @@ class airline():
 
 
 def release():
-    version = '1.0.2'
+    version = '1.2.1'
 
     print(f">>> [ Airport System Implementation Program ] release tag : {version} // Made by Cloudy // MIT LICENSE\n")
 
