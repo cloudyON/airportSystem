@@ -71,6 +71,7 @@ if __name__ == "__main__":
 
             try :
                 airline.create_airlines(comm)
+                
             except :
                 print(">>> 잘못된 항목을 넣었습니다.")
         

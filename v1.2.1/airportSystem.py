@@ -143,7 +143,7 @@ class airline():
         else :
             print("이미 다른 항공사가 있습니다.")
 
-    def create_schedule(self, airline : 'integer',schedule : 'string'):
+    def create_schedule(self, airline : 'str',schedule : 'string'):
         
         if airline in self.airlines :
             self.al_Schedule[airline].appned(schedule)
